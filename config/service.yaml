@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: event-press-receive
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - image: registry.cn-beijing.aliyuncs.com/knative-sample/event-press-receive:1.0
+        args:
+        - --concurrency=50
+        - --cache=1
+        - --timewait=20
+        - --direct=false
